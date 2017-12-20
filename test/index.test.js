@@ -54,6 +54,8 @@ describe('NeDB Service', function () {
     })).use('/people-customid', createService('people-customid', {
       id: 'customid',
       events: ['testing']
+    })).use('/people-ajv', createService('people-ajv', {
+      schema: { type: 'object', required: ['name'], properties: { name: { type: 'string' }, age: { type: 'number' } } }
     }));
 
   describe('Initialization', () => {
@@ -131,6 +133,62 @@ describe('NeDB Service', function () {
       ).then(updated =>
         assert.deepEqual(updated.data, ['first', 'second'])
       );
+    });
+  });
+
+  describe('ajv validation', () => {
+    it('validates on create and update', () => {
+      const service = app.service('people-ajv');
+
+      return service.create({
+        name: 'Valid & complete',
+        age: 27
+      }).then(person => {
+        assert.equal(person.name, 'Valid & complete');
+        assert.equal(person.age, 27);
+        return service.update(person._id, { name: 'Updated valid & complete', age: 5 });
+      }).then(person => {
+        assert.equal(person.name, 'Updated valid & complete');
+        assert.equal(person.age, 5);
+      });
+    });
+
+    it('fails on invalid data', done => {
+      const service = app.service('people-ajv');
+
+      service.create({
+        age: 'Invalid'
+      }).then(person => {
+        assert.fail(person);
+      }).catch(e => {
+        done();
+      });
+    });
+
+    it('validates on patch', () => {
+      const service = app.service('people-ajv');
+
+      return service.create({
+        name: 'Patchy'
+      }).then(person => {
+        return service.patch(person._id, { age: 17 })
+          .then(() => service.get(person._id))
+          .then(updated => {
+            assert.equal(updated.name, 'Patchy');
+            assert.equal(updated.age, 17);
+          });
+      });
+    });
+
+    it('fails on invalid patch data', done => {
+      const service = app.service('people-ajv');
+
+      service.create({
+        name: 'Patchy invalid'
+      })
+        .then(person => service.patch(person._id, { age: 'cake' }))
+        .then(person => assert.fail(person))
+        .catch(() => done());
     });
   });
 });
