@@ -8,6 +8,8 @@
 
 [feathers-nedb](https://github.com/feathersjs-ecosystem/feathers-nedb/) is a database service adapter for [NeDB](https://github.com/louischatriot/nedb), an embedded datastore with a [MongoDB](https://www.mongodb.org/) like API. NeDB can store data in-memory or on the filesystem which makes it useful as a persistent storage without a separate database server.
 
+**Note**: The library has been modified to add AJV validation support. Simply pass in a JSON Schema in Model.schema, and this validation will automatically be enabled.
+
 ```bash
 $ npm install --save nedb feathers-nedb
 ```

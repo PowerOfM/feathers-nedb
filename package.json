@@ -1,6 +1,6 @@
 {
-  "name": "feathers-nedb",
-  "description": "Feathers NeDB Service",
+  "name": "feathers-nedb-ajv",
+  "description": "Feathers NeDB Service with JSON Schema Validation",
   "version": "3.0.0",
   "homepage": "https://github.com/feathersjs-ecosystem/feathers-nedb",
   "repository": {
@@ -24,7 +24,8 @@
   "contributors": [
     "Marshall Thompson <marshall@creativeideal.net> (https://github.com/marshallswain)",
     "Eric Kryski <e.kryski@gmail.com> (http://erickryski.com)",
-    "David Luecke <daff@neyeon.de> (http://neyeon.com)"
+    "David Luecke <daff@neyeon.de> (http://neyeon.com)",
+    "Mesbah Mowlavi <m@ionx.ca> (https://ionx.ca)"
   ],
   "main": "lib/",
   "scripts": {
