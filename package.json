@@ -1,7 +1,7 @@
 {
   "name": "feathers-nedb-ajv",
   "description": "Feathers NeDB Service with JSON Schema Validation",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "homepage": "https://github.com/powerofm/feathers-nedb-ajv",
   "repository": {
     "type": "git",
