@@ -1,5 +1,8 @@
 # Change Log
 
+## [v3.1.1](https://github.com/PowerOfM/feathers-nedb-ajv/tree/v3.1.1) (2017-12-25)
+[Full Changelog](https://github.com/PowerOfM/feathers-nedb-ajv/compare/v3.1.0...v3.1.1)
+
 ## [v3.1.0](https://github.com/PowerOfM/feathers-nedb-ajv/tree/v3.1.0) (2017-12-24)
 [Full Changelog](https://github.com/PowerOfM/feathers-nedb-ajv/compare/v3.0.0...v3.1.0)
 
