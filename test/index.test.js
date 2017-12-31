@@ -55,7 +55,15 @@ describe('NeDB Service', function () {
       id: 'customid',
       events: ['testing']
     })).use('/people-ajv', createService('people-ajv', {
-      schema: { type: 'object', required: ['name'], properties: { name: { type: 'string' }, age: { type: 'number' } } }
+      schema: {
+        type: 'object',
+        required: ['name'],
+        properties: {
+          id: { type: 'string' },
+          name: { type: 'string' },
+          age: { type: 'number' }
+        }
+      }
     }));
 
   describe('Initialization', () => {
